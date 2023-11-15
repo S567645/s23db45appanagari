@@ -10,4 +10,7 @@ router.get('/', function(req, res, next) {
 router.get('/detail', eagle_controlers.eagle_view_one_Page);
 /* GET create eagle page */
 router.get('/create', eagle_controlers.eagle_create_Page);
+/* GET create update page */
+router.get('/update', eagle_controlers.eagle_update_Page);
+
 module.exports = router;
