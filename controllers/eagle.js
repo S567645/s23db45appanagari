@@ -96,5 +96,20 @@ res.send(`{"error": ${err}}`);
 }
 };
 
+// Handle eagle delete on DELETE.
+exports.eagle_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await eagle.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    
+    
+
     
     
