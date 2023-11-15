@@ -8,4 +8,6 @@ router.get('/', function(req, res, next) {
 });
 /* GET detail eagle page */
 router.get('/detail', eagle_controlers.eagle_view_one_Page);
+/* GET create eagle page */
+router.get('/create', eagle_controlers.eagle_create_Page);
 module.exports = router;
