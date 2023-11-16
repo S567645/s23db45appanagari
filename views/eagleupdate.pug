@@ -2,42 +2,45 @@ extends layout
 
 block content
   h1= title
-  - let eagleid = toShow._id
-  - let eagle_color = toShow.eagle_color
-  - let eagle_breed = toShow.eagle_breed
-  - let eagle_price = toShow.eagle_price
+  if (toShow == null)
+    h2 No instance to update
+  else
+    - let eagleid = toShow._id
+    - let eagle_color = toShow.eagle_color
+    - let eagle_breed = toShow.eagle_breed
+    - let eagle_price = toShow.eagle_price
 
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div #{eagleid}
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{eagleid}
 
-  - let actionid = "/resource/eagle/" + eagleid
-  form(id='eagleForm', action= actionid, method="PUT")
-    div.form-group
-      label.eagleAttr(for='eagle_color') eagle color
-      input#eagle_color(type='text', name='eagle_color', value= eagle_color )
-    div.form-group
-      label.eagleAttr(for='eagle_breed') eagle breed
-      input#eagle_breed(type='text', name='eagle_breed', value= eagle_breed )
-    div.form-group
-      label.eagleAttr(for='eagle_price') eagle price
-      input#eagle_price(type='number', name='eagle_price', value= eagle_price )
-    input(type="submit")
+    - let actionid = "/resource/eagle/" + eagleid
+    form(id='eagleForm', action= actionid, method="PUT")
+      div.form-group
+        label.eagleAttr eagle color
+        input#eagle_color(type='text', name='eagle_color', value= eagle_color)
+      div.form-group
+        label.eagleAttr(for='eagle_breed') eagle breed
+        input#eagle_breed(type='text', name='eagle_breed', value= eagle_breed)
+      div.form-group
+        label.eagleAttr(for='eagle_price') eagle price
+        input#eagle_price(type='number', name='eagle_price', value= eagle_price)
+      input(type="submit")
 
-  script.
-    document.forms['eagleForm'].addEventListener('submit', (event) => {
-      event.preventDefault();
-      // TODO do something here to show the user that the form is being submitted
-      fetch(event.target.action, {
-        method: 'PUT',
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-      }).then((resp) => {
-        return resp.json(); // or resp.text() or whatever the server sends
-      }).then((body) => {
-        alert("Update succeeded")
-        // TODO handle body
-      }).catch((error) => {
-        // TODO handle error
-        alert("Update failed " + error )
+    script.
+      document.forms['eagleForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show the user that the form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Update succeeded")
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed " + error )
+        });
       });
-    });

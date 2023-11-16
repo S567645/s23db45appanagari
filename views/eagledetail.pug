@@ -1,25 +1,27 @@
 extends layout
 
 block content
-  h1= title
+  h1(style='margin-bottom: 20px;')= title
   - let eagleid = toShow._id
   - let eagle_color = toShow.eagle_color
   - let eagle_breed = toShow.eagle_breed
   - let eagle_price = toShow.eagle_price
 
-  div
+  div.container(style='margin-top: 20px;')
     div.row
-      div(class='eagleAttr mr-3') eagle ID is:
-      div #{eagleid}
+      div.col-md-6
+        div.row.mb-2
+          div.col-md-4.eagleAttr.mr-3(style='font-weight: bold;') Eagle ID is:
+          div.col-md-8 #{eagleid}
 
-    div.row
-      div(class='eagleAttr mr-3') eagle color is:
-      div #{eagle_color}
+        div.row.mb-2
+          div.col-md-4.eagleAttr.mr-3(style='font-weight: bold;') Eagle color is:
+          div.col-md-8 #{eagle_color}
 
-    div.row
-      div(class='eagleAttr mr-3') eagle breed is:
-      div #{eagle_breed}
+        div.row.mb-2
+          div.col-md-4.eagleAttr.mr-3(style='font-weight: bold;') Eagle breed is:
+          div.col-md-8 #{eagle_breed}
 
-    div.row
-      div(class='eagleAttr mr-3') eagle price is:
-      div #{eagle_price}
+        div.row.mb-2
+          div.col-md-4.eagleAttr.mr-3(style='font-weight: bold;') Eagle price is:
+          div.col-md-8 #{eagle_price}
