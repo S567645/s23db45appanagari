@@ -4,9 +4,10 @@ block content
     div(class="container-fluid mt-5")
         h1= title
 
-        - let results=[{eagle_color:"brown",eagle_breed:"Bald Giant eagle",eagle_price:2000},{eagle_color:"white",eagle_breed:"Harpy eagle",eagle_price:5500},{eagle_color:"black",eagle_breed:"Havana",eagle_price:4000}]
+        - let results=[{eagle_color:"brown",eagle_breed:"Bald Giant eagle",eagle_price:2000},{eagle_color:"white",eagle_breed:"Harpy eagle",eagle_price:5500},{eagle_color:"black",eagle_breed:"Havana",eagle_price:4000}]  
         each form, item in results
-            div(class="row mb-3 p-3 border bg-light" onclick=`buy(${item})`)
+            - let destination = `dispatch(\"/eagle/update/?id=${item._id}\")`
+            div(class="row mb-3 p-3 border bg-light", onclick=`buy(${item})`)
                 div(class="col-sm-2 text-center")
                     strong #{form.eagle_color}              
                 div(class="col-sm-2 text-center")
@@ -14,8 +15,14 @@ block content
                 div(class="col-sm-2 text-center")
                     strong #{form.eagle_price}
                 hr
+                button.btn(class="btn-primary ml-1", onclick= destination) Update
+
+    //- script.
+    //-     function buy(itemNo) {
+    //-         alert(`You purchased Item ${itemNo + 1}`)
+    //-     }
 
     script.
-        function buy(itemNo) {
-            alert(`You purchased Item ${itemNo + 1}`)
+        function dispatch(path){
+            window.location.href=path
         }
