@@ -1,7 +1,19 @@
+const { Double } = require("mongodb")
 const mongoose = require("mongoose")
 const eagleSchema = mongoose.Schema({
-eagle_color: String,
-eagle_breed: String,
-eagle_price: Number
-})
-module.exports = mongoose.model("eagle",eagleSchema)
+    eagle_color: {
+        type: String,
+        required: true
+    },
+    eagle_breed: {
+        type: String,
+        required: true
+    },
+    eagle_price: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 500
+    }
+    })
+    module.exports = mongoose.model("eagle",eagleSchema)

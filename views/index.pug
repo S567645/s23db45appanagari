@@ -1,19 +1,33 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to nortwestmissouri
-  button(type="button", class="btn btn-secondary" onclick="goFaster()") Press ME
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/costumes") Take me to costumes
+    br
+    a(href="/logout") Logout
 
-  div#faster Increase the speed
+
+//-extends layout
+
+//-block content
+//-h1= title
+  //-p Welcome to nortwestmissouri
+  //-button(type="button", class="btn btn-secondary" onclick="goFaster()") Press ME
+
+  //-div#faster Increase the speed
  
-  script. 
-    let mph = 20;
-    let change = 1;
-    function goFaster() {
-      mph = mph + change;
-      change = change + 1;
-      document.getElementById("faster").innerText = `MPH ${mph} with change ${change}`
-    }
-  hr
+  //-script. 
+    //-let mph = 20;
+    //-let change = 1;
+    //-function goFaster() {
+      //-mph = mph + change;
+      //-change = change + 1;
+      //-document.getElementById("faster").innerText = `MPH ${mph} with change ${change}`
+    //-}
+  //-hr
   
