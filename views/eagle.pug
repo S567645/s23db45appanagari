@@ -16,6 +16,9 @@ block content
                     strong #{form.eagle_price}
                 hr
                 button.btn(class="btn-primary ml-1", onclick= destination) Update
+                a(class="btn btn-success" href="/eagle/create") Create
+                a(class="btn btn-danger" href=`/eagle/delete?id=${form._id}`) Delete
+                a(class="btn btn-dark" href=`/eagle/detail?id=${form._id}`) Details
 
     //- script.
     //-     function buy(itemNo) {

@@ -13,7 +13,7 @@ const eagleSchema = mongoose.Schema({
         type: Number,
         required: true,
         min: 0,
-        max: 500
+        max: 9000
     }
     })
     module.exports = mongoose.model("eagle",eagleSchema)
